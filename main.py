@@ -8,14 +8,17 @@ from analysis_all import drow_plot, print_table
 
 
 
-dataset_list = ['AdultCensus', 'COMPAS', 'Lawschool']
+dataset_list = ['Synthetic_multiclass']
+#, 'AdultCensus', 'COMPAS', 'Lawschool']
 parallel_core_number = 23
 n_seeds = 50 # Number of random seeds to try
 IPython.display.clear_output()
 
-methods_to_train = ['FUDS','FCSC', 'FPIR', 'DIR', 'FAWOS', 'KDE', 'ADV', 'PPOT', 'PPF']
+methods_to_train = ['FUDS_multiclass']
+                    #,'FCSC', 'FPIR', 'DIR', 'FAWOS', 'KDE', 'ADV', 'PPOT', 'PPF']
 
-proposed_methods = ['FUDS','FCSC', 'FPIR']
+proposed_methods = ['FUDS_multiclass']
+                    #,'FCSC', 'FPIR']
 
 ############training##########
 for method in methods_to_train:
@@ -37,6 +40,7 @@ for dataset in dataset_list:
             Result_all = pd.DataFrame()
             for seed in range(n_seeds):
                 for para in parameter_list:
+                    print(para)
                     temp = pd.read_csv(f'Result/{method}/result_of_{dataset}_with_seed_{seed}_para_{int(para * 1000)}')
                     Result_all = pd.concat([Result_all, temp])
         Result_all.to_csv(f'Result/Result_after_merge/All_result_of_{dataset}_training_by_{method}')

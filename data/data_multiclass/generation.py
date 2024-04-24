@@ -57,7 +57,7 @@ def generate_multiclass_data(n_samples):
     return df
 
 # Example usage:
-n_samples = 32560  # Number of samples to generate
+n_samples =  1000# Number of samples to generate
 data_df = generate_multiclass_data(n_samples)
 
 # Save to CSV
